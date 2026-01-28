@@ -33,18 +33,21 @@ export default function AboutPage() {
         >
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold tracking-tighter leading-tight">
-              You don’t know us yet. 
+              You don’t know us yet. <br />
               So here is a couple of photos.
             </h2>
           </div>
 
           <div className="text-sm leading-relaxed text-gray-800">
-            <p>We are a creative team based in Paris. Currently working at Marcel Paris.</p>
+            <p>We are a creative team based in Paris. Currently working at Marcel.</p>
           </div>
 
-          <div className="mt-4 pt-8 border-t border-gray-100 flex flex-col gap-4">
-            <span className="text-[10px] uppercase font-bold text-gray-400">Contact us</span>
-            <a href="mailto:jonathanetguillaume@gmail.com" className="text-sm hover:text-[#1104da] break-all">
+          <div className="mt-4 pt-8 border-t border-gray-100 flex flex-col gap-2">
+            <span className="text-[10px] font-medium text-gray-400">Contact us</span>
+            <a 
+              href="mailto:jonathanetguillaume@gmail.com" 
+              className="text-[12px] lowercase hover:text-[#1104da] transition-colors break-all"
+            >
               jonathanetguillaume@gmail.com
             </a>
           </div>
