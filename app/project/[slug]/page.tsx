@@ -23,14 +23,19 @@ export default function ProjectPage() {
     <motion.main 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen pb-32 pt-10"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="min-h-screen pb-20 pt-10"
     >
       <div className="max-w-5xl mx-auto px-8">
         <div className="flex flex-col md:flex-row gap-12 items-start">
           
-          {/* MÉDIAS (80%) */}
-          <div className="w-full md:w-[80%] flex flex-col gap-6">
+          {/* MÉDIAS (80%) - Arrivée par le bas */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+            className="w-full md:w-[80%] flex flex-col gap-6"
+          >
             {project.gallery?.map((item: any, index: number) => (
               <div key={index} className="w-full bg-black/5">
                 {item._type === 'videoItem' ? (
@@ -40,10 +45,15 @@ export default function ProjectPage() {
                 )}
               </div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* INFOS (20%) */}
-          <div className="w-full md:w-[20%] flex flex-col gap-8 md:sticky md:top-24">
+          {/* INFOS (20%) - Arrivée par la droite */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
+            className="w-full md:w-[20%] flex flex-col gap-8 md:sticky md:top-24"
+          >
             <div className="flex flex-col gap-1">
               <h2 className="font-bold text-sm uppercase tracking-tight">{project.client}</h2>
               <h3 className="opacity-40 text-[10px] uppercase tracking-wider">{project.title}</h3>
@@ -57,7 +67,6 @@ export default function ProjectPage() {
                 </p>
               )}
 
-              {/* Agency mis en avant après la description */}
               {project.agency && (
                 <div className="flex flex-col">
                   <span className="opacity-30 mb-0.5 tracking-widest text-[8px] uppercase">Agency</span>
@@ -65,7 +74,6 @@ export default function ProjectPage() {
                 </div>
               )}
 
-              {/* Creative Director juste après l'Agency */}
               {project.creativeDirector && (
                 <div className="flex flex-col">
                   <span className="opacity-30 mb-0.5 tracking-widest text-[8px] uppercase">Creative Director</span>
@@ -93,7 +101,7 @@ export default function ProjectPage() {
             <Link href="/" className="mt-4 text-[9px] font-bold opacity-30 hover:opacity-100 transition-all uppercase">
               ← BACK
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.main>
