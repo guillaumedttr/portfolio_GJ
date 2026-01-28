@@ -2,6 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+
 export default function AboutPage() {
   return (
     <main className="max-w-5xl mx-auto px-8 md:px-12 pt-10 pb-24">
@@ -22,17 +23,6 @@ export default function AboutPage() {
               unoptimized 
             />
           </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-xl font-medium mb-4">Notre Vision</h3>
-            <p className="text-base leading-relaxed text-gray-800">
-              Ton texte descriptif qui s'affiche sous le GIF ici.
-            </p>
-          </motion.div>
         </div>
 
         {/* COLONNE DROITE (3/10) */}
@@ -41,16 +31,21 @@ export default function AboutPage() {
           animate={{ opacity: 1, x: 0 }}
           className="md:col-span-3 flex flex-col gap-8"
         >
-          <h2 className="text-2xl font-bold tracking-tighter leading-none">
-            Guillaume & Jonathan
-          </h2>
-          <div className="text-sm leading-relaxed text-gray-800">
-            <p>Creative Studio / Paris</p>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl font-bold tracking-tighter leading-tight">
+              You don’t know us yet. 
+              So here is a couple of photos.
+            </h2>
           </div>
+
+          <div className="text-sm leading-relaxed text-gray-800">
+            <p>We are a creative team based in Paris. Currently working at Marcel Paris.</p>
+          </div>
+
           <div className="mt-4 pt-8 border-t border-gray-100 flex flex-col gap-4">
-            <span className="text-[10px] uppercase font-bold text-gray-400">Contact</span>
-            <a href="mailto:hello@tondomaine.com" className="text-sm hover:text-[#1104da]">
-              hello@tondomaine.com
+            <span className="text-[10px] uppercase font-bold text-gray-400">Contact us</span>
+            <a href="mailto:jonathanetguillaume@gmail.com" className="text-sm hover:text-[#1104da] break-all">
+              jonathanetguillaume@gmail.com
             </a>
           </div>
         </motion.div>
