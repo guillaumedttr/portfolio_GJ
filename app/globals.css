@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-futura: "Futura", "Futura-Medium", "Futura Medium", "ITC Futura", sans-serif;
+}
+
+body {
+  font-family: var(--font-futura);
+  -webkit-font-smoothing: antialiased;
+  background-color: white;
+  color: black;
+  font-size: 13px;
+}
+
+/* 1. On garde ton style signature : tout en majuscules par défaut */
+* {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 2. On crée une exception propre pour les paragraphes et les zones de lecture */
+p, .allow-lowercase {
+  text-transform: none !important;
+  letter-spacing: 0.01em;
+}
+
+/* 3. On s'assure que le menu reste en majuscules quoi qu'il arrive */
+nav a {
+  text-transform: uppercase !important;
+}
