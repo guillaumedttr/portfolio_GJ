@@ -31,19 +31,20 @@ nav a {
   text-transform: uppercase !important;
 }
 
-/* On cible spécifiquement le conteneur de la description */
-.description-text {
-  text-transform: none !important; /* Annule l'héritage des majuscules */
+/* ... tes autres règles ... */
+
+/* On cible la zone de description et TOUT ce qu'elle contient */
+.description-text, 
+.description-text * {
+  text-transform: none !important;
+  letter-spacing: 0.01em;
 }
 
-.description-text strong, 
-.description-text b {
+/* On s'assure que le gras et l'italique sont bien pris en compte */
+.description-text strong, .description-text b {
   font-weight: bold;
-  text-transform: none !important; /* Force le gras à rester en minuscules */
 }
 
-.description-text em, 
-.description-text i {
+.description-text em, .description-text i {
   font-style: italic;
-  text-transform: none !important; /* Force l'italique à rester en minuscules */
 }

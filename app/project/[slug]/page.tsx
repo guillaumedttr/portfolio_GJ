@@ -62,10 +62,7 @@ export default function ProjectPage() {
 
             <div className="border-t border-black/5 pt-6 flex flex-col gap-6">
               {project.description && (
-                <div 
-                  className="text-[11px] leading-relaxed opacity-80 normal-case tracking-normal"
-                  style={{ textTransform: 'none' }}
-                >
+                <div className="text-[11px] leading-relaxed opacity-80 description-text">
                   <PortableText value={project.description} />
                 </div>
               )}
