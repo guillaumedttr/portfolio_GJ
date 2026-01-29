@@ -4,14 +4,16 @@ import { client } from '../../../sanity/lib/client';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { PortableText } from '@portabletext/react';
 
 export default function ProjectPage() {
   const { slug } = useParams();
   const [project, setProject] = useState<any>(null);
 
   useEffect(() => {
+    // Requête mise à jour avec production et photographer
     const query = `*[_type == "project" && slug.current == "${slug}"][0] {
-      title, client, description, agency, creativeDirector, director, dop, producer,
+      title, client, description, agency, creativeDirector, director, dop, production, photographer,
       "gallery": gallery[] { "_type": _type, "imageUrl": asset->url, "videoUrl": videoFile.asset->url }
     }`;
     client.fetch(query).then(setProject);
@@ -29,7 +31,7 @@ export default function ProjectPage() {
       <div className="max-w-5xl mx-auto px-8">
         <div className="flex flex-col md:flex-row gap-12 items-start">
           
-          {/* MÉDIAS (80%) - Arrivée par le bas */}
+          {/* MÉDIAS (80%) */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,7 +49,7 @@ export default function ProjectPage() {
             ))}
           </motion.div>
 
-          {/* INFOS (20%) - Arrivée par la droite */}
+          {/* INFOS (20%) */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -59,12 +61,12 @@ export default function ProjectPage() {
               <h3 className="opacity-40 text-[10px] uppercase tracking-wider">{project.title}</h3>
             </div>
 
-            {/* Description + Agency + Creative Director */}
             <div className="border-t border-black/5 pt-6 flex flex-col gap-6">
+              {/* Utilisation de PortableText pour la description */}
               {project.description && (
-                <p className="text-[11px] leading-relaxed opacity-80 normal-case tracking-normal">
-                  {project.description}
-                </p>
+                <div className="text-[11px] leading-relaxed opacity-80 normal-case tracking-normal">
+                  <PortableText value={project.description} />
+                </div>
               )}
 
               {project.agency && (
@@ -82,17 +84,18 @@ export default function ProjectPage() {
               )}
             </div>
 
-            {/* Reste des crédits technique */}
+            {/* Crédits techniques mis à jour */}
             <div className="flex flex-col gap-5 text-[9px] uppercase">
               {[
                 ['Director', project.director], 
                 ['DOP', project.dop], 
-                ['Producer', project.producer]
+                ['Photographer', project.photographer],
+                ['Production', project.production]
               ].map(([label, value]) => (
                 value && (
                   <div key={label} className="flex flex-col">
-                    <span className="opacity-30 mb-0.5 tracking-widest text-[8px]">{label}</span>
-                    <span className="font-bold leading-tight">{value}</span>
+                    <span className="opacity-30 mb-0.5 tracking-widest text-[8px] uppercase">{label}</span>
+                    <span className="font-bold leading-tight uppercase">{value}</span>
                   </div>
                 )
               ))}
